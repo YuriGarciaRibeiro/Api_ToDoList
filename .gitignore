@@ -71,3 +71,10 @@ ScaffoldingReadMe.txt
 *.cache
 *.editorconfig
 *.dll
+API_ToDoList/bin/Debug/net7.0/API_ToDoList.pdb
+API_ToDoList/obj/API_ToDoList.csproj.nuget.dgspec.json
+API_ToDoList/obj/Debug/net7.0/API_ToDoList.dll
+API_ToDoList/obj/Debug/net7.0/API_ToDoList.MvcApplicationPartsAssemblyInfo.cs
+API_ToDoList/obj/Debug/net7.0/API_ToDoList.pdb
+API_ToDoList/obj/project.assets.json
+API_ToDoList/obj/project.nuget.cache
