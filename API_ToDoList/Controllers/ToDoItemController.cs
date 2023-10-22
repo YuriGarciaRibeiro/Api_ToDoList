@@ -47,6 +47,16 @@ namespace ToDoListApi.Controllers
                 return BadRequest();
             }
 
+    
+
+            // Verifique se o userId existe na tabela de usuários
+            var userExists = _context.Users.Any(u => u.userId == item.userId);
+            if (!userExists)
+            {
+                return BadRequest("UserId inválido.");
+            }
+
+
             _context.ToDoItens.Add(item);
             _context.SaveChanges();
 

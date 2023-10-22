@@ -22,7 +22,6 @@ public class ToDoItem
     [Required]
     public DateTime created_at { get; set; }
     
-    [Required]
     public DateTime updated_at { get; set; }
 
     [Required]
