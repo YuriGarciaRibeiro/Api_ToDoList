@@ -20,20 +20,24 @@ namespace ToDoListApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
-            var users = _context.Users.ToList();
+            var users = _context?.Users?.ToList();
             return users.Any() ? Ok(users) : NotFound();
         }
 
         [HttpGet("{id:int}", Name = "obterUser")]
         public ActionResult<User> Get(int id)
         {
-            return _context.Users.FirstOrDefault(user => user.userId == id) is User user ? Ok(user) : NotFound();
+            return _context?.Users?.FirstOrDefault(user => user.userId == id) is User user ? Ok(user) : NotFound();
         }
 
         [HttpGet("itens")]
         public ActionResult<IEnumerable<User>> GetUserItens()
         {
-            var users = _context.Users.Include(p=> p.todo_items).ToList();
+            var users = _context?.Users?.Include(p => p.todo_items).ToList();
+            if (users == null)
+            {
+                return NotFound();
+            }
             return users.Any() ? Ok(users) : NotFound();
         }
 
@@ -44,8 +48,8 @@ namespace ToDoListApi.Controllers
             {
                 return BadRequest();
             }
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _context?.Users?.Add(user);
+            _context?.SaveChanges();
 
             return new CreatedAtRouteResult("obterUser", new { id = user.userId }, user);
         }
@@ -63,13 +67,13 @@ namespace ToDoListApi.Controllers
         [HttpDelete("{id:int}")]
         public ActionResult Delete(int id)
         {
-            var user = _context.Users.FirstOrDefault(user => user.userId == id);
+            var user = _context?.Users?.FirstOrDefault(user => user.userId == id);
             if (user == null)
             {
                 return BadRequest();
             }
-            _context.Users.Remove(user);
-            _context.SaveChanges();
+            _context?.Users?.Remove(user);
+            _context?.SaveChanges();
             return Ok(user);
 
         }
